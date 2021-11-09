@@ -6,10 +6,20 @@ const customerSchema = new Schema(
   {
     email: { type: String, required: true },
 
-    password: { type: String },
+    password: {
+      type: String,
+      required: function () {
+        return !Boolean(this.googleId);
+      },
+    },
     role: { type: String, default: "Guest", enum: ["Guest", "Host"] },
     refreshToken: { type: String },
-    googleId: { type: String },
+    googleId: {
+      type: String,
+      required: function () {
+        return !Boolean(this.password);
+      },
+    },
   },
 
   {
