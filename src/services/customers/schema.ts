@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import { Users } from "../../interfaces";
 const { Schema, model } = mongoose;
 
 const customerSchema = new Schema(
@@ -8,17 +9,11 @@ const customerSchema = new Schema(
 
     password: {
       type: String,
-      required: function () {
-        return !Boolean(this.googleId);
-      },
     },
     role: { type: String, default: "Guest", enum: ["Guest", "Host"] },
     refreshToken: { type: String },
     googleId: {
       type: String,
-      required: function () {
-        return !Boolean(this.password);
-      },
     },
   },
 

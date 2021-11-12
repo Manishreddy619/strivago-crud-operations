@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import { Users } from "../../interfaces";
 const { Schema, model } = mongoose;
 
 const accomadationSchema = new Schema(

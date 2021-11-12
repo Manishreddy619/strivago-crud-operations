@@ -1,9 +1,9 @@
-import customerModel from "./schema.js";
+import customerModel from "./schema";
 import express from "express";
 import createHttpError from "http-errors";
-import { JWTAuthenticate } from "../auth/tools.js";
-import { JWTAuthMiddleware } from "../auth/tokenmiddleware.js";
-import accomadationSchema from "../accommodation/schema.js";
+import { JWTAuthenticate } from "../auth/tools";
+import { JWTAuthMiddleware } from "../auth/tokenmiddleware";
+import accomadationSchema from "../accommodation/schema";
 import passport from "passport";
 const customerRouter = express.Router();
 

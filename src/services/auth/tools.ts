@@ -3,7 +3,7 @@ const generateJwt = (payload) =>
   new Promise((resove, reject) =>
     jwt.sign(
       payload,
-      process.env.JWT_SECRET,
+      process.env.JWT_SECRET as string,
       { expiresIn: "1 week" },
       (err, token) => {
         if (err) reject(err);
@@ -11,9 +11,12 @@ const generateJwt = (payload) =>
       }
     )
   );
-export const verifyJWT = (token) =>
+interface token {
+  name: string;
+}
+export const verifyJWT = (token: any) =>
   new Promise((res, rej) =>
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET as string, (err, decodedToken) => {
       if (err) rej(err);
       else res(decodedToken);
     })
